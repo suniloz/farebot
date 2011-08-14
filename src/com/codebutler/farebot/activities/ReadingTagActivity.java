@@ -36,6 +36,7 @@ import com.codebutler.farebot.R;
 import com.codebutler.farebot.UnsupportedTagException;
 import com.codebutler.farebot.Utils;
 import com.codebutler.farebot.cepas.CEPASCard;
+import com.codebutler.farebot.felica.FelicaCard;
 import com.codebutler.farebot.mifare.DesfireCard;
 import com.codebutler.farebot.mifare.MifareCard;
 import com.codebutler.farebot.provider.CardProvider;
@@ -79,6 +80,8 @@ public class ReadingTagActivity extends Activity
                     		return CEPASCard.dumpTag(tag.getId(), tag);
                     	else if (ArrayUtils.contains(techs, "android.nfc.tech.IsoDep"))
                             return DesfireCard.dumpTag(tag.getId(), tag);
+                        else if (ArrayUtils.contains(techs, "android.nfc.tech.NfcF"))
+                            return FelicaCard.dumpTag(tag);
                         else
                             throw new UnsupportedTagException(techs, Utils.getHexString(tag.getId()));
                     } catch (Exception ex) {
