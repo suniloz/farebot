@@ -34,7 +34,6 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import com.codebutler.farebot.Utils;
 import com.codebutler.farebot.mifare.MifareCard;
@@ -120,7 +119,6 @@ public class FelicaCard extends MifareCard {
 
             Map<Short, Integer> keyVersions = new TreeMap<Short, Integer>();
             Bundle keyVerBundle = source.readBundle();
-            Log.e(TAG, "keyver has "+keyVerBundle.size());
             for (String key : keyVerBundle.keySet())
                 keyVersions.put(Integer.valueOf(key).shortValue(), keyVerBundle.getInt(key));
 
