@@ -28,6 +28,7 @@ import com.codebutler.farebot.Utils;
 import com.codebutler.farebot.cepas.CEPASCard;
 import com.codebutler.farebot.transit.ClipperTransitData;
 import com.codebutler.farebot.transit.EZLinkTransitData;
+import com.codebutler.farebot.transit.MykiTransitData;
 import com.codebutler.farebot.transit.OrcaTransitData;
 import com.codebutler.farebot.transit.TransitData;
 import org.w3c.dom.Document;
@@ -68,6 +69,8 @@ public abstract class MifareCard implements Parcelable
             return new ClipperTransitData(this);
         if (EZLinkTransitData.check(this))
            return new EZLinkTransitData(this);
+        if (MykiTransitData.check(this))
+            return new MykiTransitData(this);
         return null;
     }
 
